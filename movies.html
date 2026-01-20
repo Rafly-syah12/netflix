@@ -133,14 +133,17 @@ body {
 .poster {
     min-width: 260px;
     height: 150px;
-    background: #333;
     border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    transition: transform .3s;
+    overflow: hidden;
     cursor: pointer;
+    transition: transform .3s;
+    background: #111;
+}
+
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .poster:hover {
@@ -201,15 +204,16 @@ body {
     <div class="row-arrow left" onclick="slideRow(-1)">❮</div>
     <div class="row-arrow right" onclick="slideRow(1)">❯</div>
 
-    <div class="slider" id="slider">
-        <div class="poster">WEDNESDAY</div>
-        <div class="poster">CROWN</div>
-        <div class="poster">SWEET HOME</div>
-        <div class="poster">TWILIGHT</div>
-        <div class="poster">NARNIA</div>
-        <div class="poster">BERLIN</div>
-        <div class="poster">MONEY HEIST</div>
-    </div>
+   <div class="slider" id="slider">
+    <div class="poster"><img src="wednesday.jpeg" alt="Wednesday"></div>
+    <div class="poster"><img src="crown.jpeg" alt="The Crown"></div>
+    <div class="poster"><img src="sweethome.jpeg" alt="Sweet Home"></div>
+    <div class="poster"><img src="twilight.jpeg" alt="Twilight"></div>
+    <div class="poster"><img src="narnia.jpeg" alt="Narnia"></div>
+    <div class="poster"><img src="berlin.jpeg" alt="Berlin"></div>
+    <div class="poster"><img src="parasite.jpeg" alt="Parasite"></div>
+</div>
+
 </section>
 
 <script>
