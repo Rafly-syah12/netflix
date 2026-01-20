@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix Desktop UI</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* ================= NAVBAR ================= */
+.top-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.4));
+    padding: 16px 50px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.netflix-logo {
+    color: #e50914;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-menu a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 14px;
+}
+    /* ACTIVE MENU */
+    .nav-menu li.active a {
+    color: #e50914;
+    font-weight: bold;
+    }
+
+/* ================= HERO ================= */
+.hero {
+    height: 75vh; /* Lebih pendek */
+    min-height: 600px;
+    background:
+        linear-gradient(to right, rgba(0,0,0,1) 35%, rgba(0,0,0,0.3) 65%, transparent 80%),
+        url("images/stranger-things-bg.jpg");
+    background-size: cover;
+    background-position: center right;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    margin-top: 60px;
+    position: relative;
+    margin-bottom: -50px; /* TAMBAHKAN MARGIN NEGATIF BESAR */
+}
+
+.hero-content {
+    width: 40%; /* LEBIH KECIL agar poster lebih besar */
+    max-width: 500px;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.hero-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: .9;
+    margin-bottom: 10px;
+    max-width: 500px;
+}
+
+.hero-buttons {
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 26px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn.play {
+    background: #fff;
+    color: #000;
+}
+
+.btn.info {
+    background: rgba(109,109,110,.7);
+    color: #fff;
+}
+
+/* POSTER HORIZONTAL BESAR DI SAMPING - DIPERBESAR */
+.hero-poster-container {
+    position: absolute;
+    right: 40px; /* LEBIH DEKAT KE KANAN */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: 850px; /* LEBIH LEBAR - DIPERBESAR */
+    height: 480px; /* LEBIH TINGGI - DIPERBESAR */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 1);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.hero-poster:hover {
+    transform: scale(1.03);
+}
+
+/* ================= SECTION TITLE ================= */
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 80px 10px; /* LEBIH KECIL */
+    color: #fff;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.section-title span {
+    display: block;
+    font-size: 42px;
+    color: #e50914;
+    margin-top: 5px;
+}
+
+/* ================= ROW SLIDER ================= */
+.row {
+    position: relative;
+    padding: 0 60px 40px; /* ATAS MENJADI 0 */
+    margin-top: -30px; /* TAMBAHKAN MARGIN NEGATIF */
+}
+
+.row-title {
+    font-size: 20px;
+    margin-bottom: 15px; /* LEBIH KECIL */
+}
+
+.slider {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 15px 0; /* LEBIH KECIL */
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+.poster {
+    flex: 0 0 auto;
+    width: 180px;
+    aspect-ratio: 2 / 3;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #111;
+    transition: transform 0.3s;
+}
+
+.poster:hover {
+    transform: scale(1.08);
+}
+
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ARROWS */
+.row-arrow {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 5;
+    color: rgba(255,255,255,.8);
+    background: rgba(0,0,0,0.6);
+    width: 40px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.row-arrow:hover {
+    background: rgba(0,0,0,0.9);
+}
+
+.row-arrow.left { left: 20px; }
+.row-arrow.right { right: 20px; }
+
+/* FOOTER */
+.footer {
+    padding: 30px 50px;
+    border-top: 1px solid #333;
+    margin-top: 10px; /* LEBIH KECIL */
+    color: #808080;
+    font-size: 12px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="top-navbar">
+    <div class="nav-left">
+        <div class="netflix-logo">NETFLIX</div>
+        <ul class="nav-menu">
+            <li class="active"><a href="tvshows.html">TV Shows</a></li>
+            <li ><a href="movies.html">Movies</a></li>
+            <li><a href="recently.html">Recently Watch</a></li>
+            <li><a href="mylist.html">My List</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-title">STRANGER THINGS</div>
+        <p class="hero-desc">
+            When a young boy vanishes, a small town uncovers a mystery involving
+            secret experiments, terrifying supernatural forces and one strange little girl.
+        </p>
+        <div class="hero-buttons">
+            <button class="btn play">▶ Play</button>
+            <button class="btn info">My List</button>
+        </div>
+    </div>
+    
+    <!-- Poster Stranger Things HORIZONTAL BESAR di samping - DIPERBESAR -->
+    <div class="hero-poster-container">
+        <img src="ST.jpeg" alt="Stranger Things Poster" class="hero-poster">
+    </div>
+</section>
+
+<!-- ROW SLIDER -->
+<section class="row">
+    <div class="row-title">Popular on Netflix</div>
+
+    <div class="row-arrow left" onclick="slideRow(-1)">❮</div>
+    <div class="row-arrow right" onclick="slideRow(1)">❯</div>
+
+   <div class="slider" id="slider">
+    <div class="poster"><img src="wednesday.jpeg" alt="Wednesday"></div>
+    <div class="poster"><img src="crown.jpeg" alt="The Crown"></div>
+    <div class="poster"><img src="sweethome.jpeg" alt="Sweet Home"></div>
+    <div class="poster"><img src="twilight.jpeg" alt="Twilight"></div>
+    <div class="poster"><img src="narnia.jpeg" alt="Narnia"></div>
+    <div class="poster"><img src="berlin.jpeg" alt="Berlin"></div>
+    <div class="poster"><img src="parasite.jpeg" alt="Parasite"></div>
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+    Activate Windows<br>
+    Go to Settings to activate Windows.
+</div>
+
+<script>
+const slider = document.getElementById("slider");
+
+function slideRow(direction) {
+    slider.scrollBy({
+        left: direction * 196 * 4, // 4 poster
+        behavior: "smooth"
+    });
+}
+</script>
+
+</body>
+</html>
