@@ -2,59 +2,140 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Netflix | My List</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="navbar">
-  <div class="logo">NETFLIX</div>
-  <nav>
-    <a href="tvshows.html">TV Shows</a>
-    <a href="movies.html">Movies</a>
-    <a href="recently.html">Recently Watch</a>
-    <a href="mylist.html" class="active">My List</a>
-  </nav>
-</header>
+<nav class="top-navbar">
+    <div class="nav-left">
+        <div class="netflix-logo">NETFLIX</div>
+        <ul class="nav-menu">
+            <li><a href="tvshows.html">TV Shows</a></li>
+            <li><a href="movies.html">Movies</a></li>
+            <li><a href="recently.html">Recently Watch</a></li>
+            <li class="active"><a href="mylist.html">My List</a></li>
+        </ul>
+    </div>
+</nav>
 
-<section class="hero">
-  <h1>NETFLIX</h1>
-</section>
+<main>
+  <section class="hero">
+    <h1>NETFLIX</h1>
+  </section>
 
-<section class="mylist">
+  <section class="mylist">
+    <h2 class="section-title">MY LIST</h2>
 
-  <!-- ROW 1 -->
-  <div class="mylist-row">
+    <!-- ROW 1 -->
+    <div class="mylist-row">
+      <div class="bg-numbers">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+      </div>
 
-    <div class="bg-numbers">
-      <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+      <div class="posters">
+        <div class="poster-item">
+          <img src="wednesday.jpeg" alt="Wednesday">
+          <div class="poster-info">
+            <div class="poster-title">WEDNESDAY</div>
+            <div class="poster-details">NOV 21 • NETFLIX</div>
+          </div>
+        </div>
+        
+        <div class="poster-item1">
+          <img src="twilight.jpeg" alt="Twilight">
+          <div class="poster-info">
+            <div class="poster-title">twilight</div>
+            <div class="poster-details">Sweet Home • Sony Pictures Classics</div>
+          </div>
+        </div>
+        
+        <div class="poster-item2">
+          <img src="sweethome.jpeg" alt="Sweet Home">
+          <div class="poster-info">
+            <div class="poster-title">STRANGER THINGS</div>
+            <div class="poster-details">Netflix</div>
+          </div>
+        </div>
+        
+        <div class="poster-item3">
+          <img src="strangerthings.jpeg" alt="Stranger Things">
+          <div class="poster-info">
+            <div class="poster-title">NARNIA</div>
+            <div class="poster-details">Disney+ Original Series</div>
+          </div>
+        </div>
+        
+        <div class="poster-item4">
+          <img src="narnia.jpeg" alt="Narnia">
+          <div class="poster-info">
+            <div class="poster-title">CROWN</div>
+            <div class="poster-details">NETFLIX</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="posters">
-      <img src="posters/wednesday.jpg">
-      <img src="posters/narnia.jpg">
-      <img src="posters/twilight.jpg">
-      <img src="posters/korean.jpg">
-      <img src="posters/silent.jpg">
+    <!-- ROW 2 -->
+    <div class="mylist-row">
+      <div class="bg-numbers">
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>10</span>
+      </div>
+
+      <div class="posters">
+        <div class="poster-item">
+          <img src="crown.jpeg" alt="Crown">
+          <div class="poster-info">
+            <div class="poster-title">MONEY HEIST: KOREA</div>
+            <div class="poster-details">2K24 NETFLIX</div>
+          </div>
+        </div>
+        
+        <div class="poster-item1">
+          <img src="berlin.jpeg" alt="Berlin">
+          <div class="poster-info">
+            <div class="poster-title">PARASITE</div>
+            <div class="poster-details">Netflix • 2K24 NETFLIX</div>
+          </div>
+        </div>
+        
+        <div class="poster-item2">
+          <img src="parasite.jpeg" alt="Parasite">
+          <div class="poster-info">
+            <div class="poster-title">ALIEN</div>
+            <div class="poster-details">Paramount+ • 2K24 NETFLIX</div>
+          </div>
+        </div>
+        
+        <div class="poster-item3">
+          <img src="interstellar.jpeg" alt="Interstellar">
+          <div class="poster-info">
+            <div class="poster-title">INTERSTELLAR</div>
+            <div class="poster-details">Netflix • Warner Bros.</div>
+          </div>
+        </div>
+        
+        <div class="poster-item4">
+          <img src="fightclub.jpeg" alt="Fight Club">
+          <div class="poster-info">
+            <div class="poster-title">FIGHT CLUB</div>
+            <div class="poster-details">20th Century Fox</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+</main>
 
-  </div>
-
-  <!-- ROW 2 -->
-  <div class="mylist-row">
-
-    <div class="bg-numbers">
-      <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-    </div>
-
-    <div class="posters">
-      <img src="posters/maze.jpg">
-      <img src="posters/chef.jpg">
-      <img src="posters/crown.jpg">
-      <img src="posters/twilight2.jpg">
-      <img src="posters/berlin.jpg">
-    </div>
-
-  </div>
-
-</section>
+<script src="script.js"></script>
+</body>
+</html>
