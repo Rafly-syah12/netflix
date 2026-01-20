@@ -1,430 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix UI</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-        
-        body {
-            background-color: #000;
-            color: #fff;
-            padding: 20px;
-            line-height: 1.4;
-        }
-        
-        /* Header dengan title Android Expanded */
-        .android-title {
-            color: #a0a0a0;
-            font-size: 14px;
-            margin-bottom: 15px;
-            font-weight: normal;
-        }
-        
-        /* Logo Netflix */
-        .netflix-logo {
-            color: #e50914;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 30px;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Menu Navigasi */
-        .nav-menu {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-        
-        .nav-menu li {
-            margin-bottom: 12px;
-        }
-        
-        .nav-menu a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-        }
-        
-        /* Divider Line */
-        .divider {
-            height: 1px;
-            background-color: #333;
-            margin: 25px 0;
-        }
-        
-        /* Series Section */
-        .section-title {
-            color: #fff;
-            font-size: 16px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .series-title {
-            color: #fff;
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .series-description {
-            color: #a0a0a0;
-            font-size: 15px;
-            margin-bottom: 25px;
-            line-height: 1.5;
-            max-width: 600px;
-        }
-        
-        /* Buttons */
-        .button-container {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-        
-        .button {
-            padding: 10px 24px;
-            border-radius: 2px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .play-button {
-            background-color: #fff;
-            color: #000;
-        }
-        
-        .mylist-button {
-            background-color: rgba(109, 109, 110, 0.7);
-            color: #fff;
-        }
-        
-        /* Images Grid */
-        .images-section {
-            margin-top: 30px;
-        }
-        
-        .images-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        
-        @media (min-width: 768px) {
-            .images-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .images-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        
-        .image-card {
-            background-color: #1a1a1a;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .image-placeholder {
-            height: 120px;
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #808080;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        
-        .image-info {
-            padding: 12px 15px;
-        }
-        
-        .image-title {
-            color: #fff;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .image-date {
-            color: #808080;
-            font-size: 13px;
-            margin-bottom: 3px;
-        }
-        
-        .image-tag {
-            color: #808080;
-            font-size: 12px;
-            font-style: italic;
-        }
-        
-        /* Warna khusus untuk setiap image card */
-        .wednesday .image-placeholder { background-color: #2c3e50; }
-        .crown .image-placeholder { background-color: #34495e; }
-        .sweet-home .image-placeholder { background-color: #2c3e50; }
-        .twilight .image-placeholder { background-color: #2c3e50; }
-        .narnia .image-placeholder { background-color: #34495e; }
-        .berlin .image-placeholder { background-color: #2c3e50; }
-        .money-heist .image-placeholder { background-color: #34495e; }
-        
-        /* Layout untuk series section */
-        .series-layout {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        @media (min-width: 768px) {
-            .series-layout {
-                flex-direction: row;
-                gap: 40px;
-            }
-            
-            .series-content {
-                flex: 1;
-            }
-            
-            .series-poster {
-                flex: 0 0 200px;
-            }
-        }
-        
-        /* Poster placeholder untuk Stranger Things */
-        .series-poster-placeholder {
-            height: 180px;
-            background: linear-gradient(135deg, #0c2461, #1e3799);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #a3c4f3;
-            font-weight: bold;
-            font-size: 22px;
-            text-align: center;
-            border-radius: 4px;
-            margin-top: 20px;
-        }
-        
-        @media (min-width: 768px) {
-            .series-poster-placeholder {
-                height: 250px;
-                margin-top: 0;
-            }
-        }
-        /* ===============================
-             TOP NAVBAR NETFLIX STYLE
-         ================================ */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix Desktop UI</title>
 
-        .top-navbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        background: linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.9),
-            rgba(0,0,0,0.6)
-        );
-        padding: 14px 20px;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-        /* LEFT AREA */
-        .nav-left {
-        display: flex;
-        align-items: center;
-        gap: 35px;
-        }
+body {
+    background: #000;
+    color: #fff;
+}
 
-        /* MENU */
-        .nav-menu {
-        list-style: none;
-        display: flex;
-        gap: 25px;
-        }
+/* ================= NAVBAR ================= */
+.top-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.4));
+    padding: 16px 50px;
+}
 
-        .nav-menu li a {
-        color: #e5e5e5;
-        text-decoration: none;
-        font-size: 15px;
-        transition: color 0.3s ease;
-        }
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
 
-        .nav-menu li a:hover {
-        color: #ffffff;
-        }
+.netflix-logo {
+    color: #e50914;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        /* ACTIVE MENU */
-        .nav-menu li.active a {
-        color: #e50914;
-        font-weight: bold;
-        }
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-        .nav-menu {
-            display: none;
-        }
-        }
+.nav-menu a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-    </style>
+/* ================= HERO ================= */
+.hero {
+    height: 90vh;
+    background:
+        linear-gradient(to right, rgba(0,0,0,.85), rgba(0,0,0,.3)),
+        url("images/stranger-things.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-title {
+    font-size: 64px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: .9;
+}
+
+.hero-buttons {
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 26px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.btn.play {
+    background: #fff;
+    color: #000;
+}
+
+.btn.info {
+    background: rgba(109,109,110,.7);
+    color: #fff;
+}
+
+/* ================= ROW SLIDER ================= */
+.row {
+    position: relative;
+    padding: 40px 60px;
+}
+
+.row-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.slider {
+    display: flex;
+    gap: 12px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.poster {
+    min-width: 260px;
+    height: 150px;
+    background: #333;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: transform .3s;
+    cursor: pointer;
+}
+
+.poster:hover {
+    transform: scale(1.1);
+}
+
+/* ARROWS */
+.row-arrow {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 5;
+    color: rgba(255,255,255,.8);
+}
+
+.row-arrow.left { left: 15px; }
+.row-arrow.right { right: 15px; }
+</style>
 </head>
+
 <body>
-    
-    <nav class="top-navbar">
+
+<!-- NAVBAR -->
+<nav class="top-navbar">
     <div class="nav-left">
-    <div class="netflix-logo">NETFLIX</div>
-
-    <ul class="nav-menu">
-      <li><a href="#">TV Shows</a></li>
-      <li  class="active"><a href="#">Movies</a></li>
-      <li><a href="#">Recently Watch</a></li>
-      <li><a href="#">My List</a></li>
-    </ul>
+        <div class="netflix-logo">NETFLIX</div>
+        <ul class="nav-menu">
+            <li><a href="#">TV Shows</a></li>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Recently Watch</a></li>
+            <li><a href="#">My List</a></li>
+        </ul>
     </div>
-    </nav>
+</nav>
 
-    
-    <div class="divider"></div>
-    
-    <div class="section-title">SERIES</div>
-    
-    <div class="series-layout">
-        <div class="series-content">
-            <div class="series-title">STRANGER THINGS</div>
-            
-            <p class="series-description">
-                When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and a strange little girl.
-            </p>
-            
-            <div class="button-container">
-                <button class="button play-button">Play</button>
-                <button class="button mylist-button">My List</button>
-            </div>
-        </div>
-        
-        <div class="series-poster">
-            <div class="series-poster-placeholder">
-                STRANGER<br>THINGS
-            </div>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-title">STRANGER THINGS</div>
+        <p class="hero-desc">
+            When a young boy vanishes, a small town uncovers a mystery involving
+            secret experiments, terrifying supernatural forces and one strange little girl.
+        </p>
+        <div class="hero-buttons">
+            <button class="btn play">▶ Play</button>
+            <button class="btn info">ℹ More Info</button>
         </div>
     </div>
-    
-    <div class="divider"></div>
-    
-    <div class="images-section">
-        <div class="section-title">IMAGES</div>
-        
-        <div class="images-grid">
-            <!-- Wednesday -->
-            <div class="image-card wednesday">
-                <div class="image-info">
-                    <div class="image-title">WEDNESDAY</div>
-                    <div class="image-date">NOV 23 | Netflix</div>
-                    <div class="image-tag">NETFLIX</div>
-                </div>
-                <div class="image-placeholder">WEDNESDAY</div>
-            </div>
-            
-            <!-- Crown -->
-            <div class="image-card crown">
-                <div class="image-info">
-                    <div class="image-title">CROWN</div>
-                    <div class="image-date">NOV 30 | Netflix</div>
-                    <div class="image-tag">NETFLIX</div>
-                </div>
-                <div class="image-placeholder">CROWN</div>
-            </div>
-            
-            <!-- Sweet Home -->
-            <div class="image-card sweet-home">
-                <div class="image-info">
-                    <div class="image-title">Sweet Home</div>
-                    <div class="image-date">NOV 31 | Netflix</div>
-                    <div class="image-tag">NETFLIX</div>
-                </div>
-                <div class="image-placeholder">Sweet Home</div>
-            </div>
-            
-            <!-- Twilight -->
-            <div class="image-card twilight">
-                <div class="image-info">
-                    <div class="image-title">Twilight</div>
-                    <div class="image-date">NOV 32 | Netflix</div>
-                    <div class="image-tag">NETFLIX</div>
-                </div>
-                <div class="image-placeholder">Twilight</div>
-            </div>
-            
-            <!-- Narnia -->
-            <div class="image-card narnia">
-                <div class="image-info">
-                    <div class="image-title">Narnia</div>
-                    <div class="image-date">NOV 33 | Netflix</div>
-                    <div class="image-tag">NETFLIX</div>
-                </div>
-                <div class="image-placeholder">Narnia</div>
-            </div>
-            
-            <!-- Berlin -->
-            <div class="image-card berlin">
-                <div class="image-info">
-                    <div class="image-title">Berlin</div>
-                    <div class="image-date">NOV 34 | Netflix</div>
-                    <div class="image-tag">NETFLIX</div>
-                </div>
-                <div class="image-placeholder">Berlin</div>
-            </div>
-            
-            <!-- Money Heist: Korea -->
-            <div class="image-card money-heist">
-                <div class="image-info">
-                    <div class="image-title">Money Heist: Korea</div>
-                    <div class="image-date">NOV 35 | Netflix</div>
-                    <div class="image-tag">NETFLIX</div>
-                </div>
-                <div class="image-placeholder">Money Heist: Korea</div>
-            </div>
-        </div>
-    </div>
+</section>
 
-    <script>
-        // Fungsi sederhana untuk tombol
-        document.querySelector('.play-button').addEventListener('click', function() {
-            alert('Playing Stranger Things');
-        });
-        
-        document.querySelector('.mylist-button').addEventListener('click', function() {
-            const button = this;
-            if (button.textContent === 'My List') {
-                button.textContent = 'Added to List';
-                button.style.backgroundColor = '#404040';
-            } else {
-                button.textContent = 'My List';
-                button.style.backgroundColor = 'rgba(109, 109, 110, 0.7)';
-            }
-        });
-        
-        // Fungsi untuk image cards
-        document.querySelectorAll('.image-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const title = this.querySelector('.image-title').textContent;
-                alert(`Selected: ${title}`);
-            });
-        });
-    </script>
+<!-- ROW SLIDER -->
+<section class="row">
+    <div class="row-title">Popular on Netflix</div>
+
+    <div class="row-arrow left" onclick="slideRow(-1)">❮</div>
+    <div class="row-arrow right" onclick="slideRow(1)">❯</div>
+
+    <div class="slider" id="slider">
+        <div class="poster">WEDNESDAY</div>
+        <div class="poster">CROWN</div>
+        <div class="poster">SWEET HOME</div>
+        <div class="poster">TWILIGHT</div>
+        <div class="poster">NARNIA</div>
+        <div class="poster">BERLIN</div>
+        <div class="poster">MONEY HEIST</div>
+    </div>
+</section>
+
+<script>
+const slider = document.getElementById("slider");
+
+function slideRow(direction) {
+    slider.scrollLeft += direction * 300;
+}
+</script>
+
 </body>
 </html>
