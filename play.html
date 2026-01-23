@@ -18,6 +18,53 @@ body {
     color: #fff;
     overflow-x: hidden;
 }
+/* ================= FULLSCREEN SUBSCRIPTION OVERLAY ================= */
+.subscription-overlay-full {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subscription-overlay-full img {
+    max-width: 1100px;
+    width: 90%;
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,1);
+}
+
+/* CLOSE BUTTON */
+.close-subscription {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(0,0,0,0.7);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+.close-subscription:hover {
+    background: #e50914;
+    transform: scale(1.15);
+}
+
+
+
 
 /* ================= NAVBAR ================= */
 .top-navbar {
@@ -247,26 +294,20 @@ body {
     font-size: 12px;
     text-align: center;
 }
-.btn.info.active {
-    background: #e50914;
-    color: #fff;
-}
-.btn {
-    transition: 0.3s ease;
-}
 
 </style>
 </head>
 
 <body>
 
+
 <!-- NAVBAR -->
 <nav class="top-navbar">
     <div class="nav-left">
         <div class="netflix-logo">NETFLIX</div>
         <ul class="nav-menu">
-            <li class="active"><a href="tvshows.html">TV Shows</a></li>
-            <li ><a href="movies.html">Movies</a></li>
+            <li><a href="tvshows.html">TV Shows</a></li>
+            <li class="active"><a href="movies.html">Movies</a></li>
             <li><a href="recently.html">Recently Watch</a></li>
             <li><a href="mylist.html">TOP 10</a></li>
         </ul>
@@ -282,10 +323,8 @@ body {
             secret experiments, terrifying supernatural forces and one strange little girl.
         </p>
         <div class="hero-buttons">
-             <button class="btn play" onclick="window.location.href='play.html'">
-    ▶ Play
-            <button class="btn info" id="myListBtn">My List</button>
-
+            <button class="btn play">▶ Play</button>
+            <button class="btn info">My List</button>
         </div>
     </div>
     
@@ -303,35 +342,23 @@ body {
     <div class="row-arrow right" onclick="slideRow(1)">❯</div>
 
    <div class="slider" id="slider">
-    
-   <a href="wenesdaytv.html" class="poster-link">
-    <div class="poster">
-        <img src="wednesday.jpeg" alt="Wednesday">
-    </div>
-</a>
-
-   <a href="crowntv.html" class="poster-link">
-    <div class="poster">
-        <img src="crown.jpeg" alt="The Crown">
-    </div>
-</a>
- 
-   <a href="shtv.html" class="poster-link">
-    <div class="poster">
-        <img src="sweethome.jpeg" alt="The Crown">
-    </div>
-</a>
-    <a href="tltv.html" class="poster-link">
-    <div class="poster">
-        <img src="twilight.jpeg" alt="The Crown">
-    </div>
-</a>
+    <div class="poster"><img src="wednesday.jpeg" alt="Wednesday"></div>
+    <div class="poster"><img src="crown.jpeg" alt="The Crown"></div>
+    <div class="poster"><img src="sweethome.jpeg" alt="Sweet Home"></div>
+    <div class="poster"><img src="twilight.jpeg" alt="Twilight"></div>
     <div class="poster"><img src="narnia.jpeg" alt="Narnia"></div>
     <div class="poster"><img src="berlin.jpeg" alt="Berlin"></div>
     <div class="poster"><img src="parasite.jpeg" alt="Parasite"></div>
 </div>
 
 </section>
+
+<!-- ================= SUBSCRIPTION OVERLAY ================= -->
+<div class="subscription-overlay-full">
+    <a href="movies.html" class="close-subscription">✕</a>
+    <img src="langganan netflix.jpg" alt="Netflix Subscription">
+</div>
+
 
 <!-- FOOTER -->
 <div class="footer">
@@ -342,19 +369,15 @@ body {
 <script>
 const slider = document.getElementById("slider");
 
+
+
 function slideRow(direction) {
     slider.scrollBy({
         left: direction * 196 * 4, // 4 poster
         behavior: "smooth"
     });
 }
-</script>
-<script>
-const myListBtn = document.getElementById("myListBtn");
 
-myListBtn.addEventListener("click", () => {
-    myListBtn.classList.toggle("active");
-});
 </script>
 
 </body>

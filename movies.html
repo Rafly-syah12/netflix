@@ -247,6 +247,15 @@ body {
     font-size: 12px;
     text-align: center;
 }
+.btn.info.active {
+    background: #e50914;
+    color: #fff;
+}
+.btn {
+    transition: 0.3s ease;
+}
+
+
 </style>
 </head>
 
@@ -260,7 +269,7 @@ body {
             <li><a href="tvshows.html">TV Shows</a></li>
             <li class="active"><a href="movies.html">Movies</a></li>
             <li><a href="recently.html">Recently Watch</a></li>
-            <li><a href="mylist.html">My List</a></li>
+            <li><a href="mylist.html">TOP 10</a></li>
         </ul>
     </div>
 </nav>
@@ -274,8 +283,12 @@ body {
             secret experiments, terrifying supernatural forces and one strange little girl.
         </p>
         <div class="hero-buttons">
-            <button class="btn play">▶ Play</button>
-            <button class="btn info">My List</button>
+           <button class="btn play" onclick="window.location.href='play.html'">
+    ▶ Play
+</button>
+
+            <button class="btn info" id="myListBtn">My List</button>
+
         </div>
     </div>
     
@@ -293,10 +306,30 @@ body {
     <div class="row-arrow right" onclick="slideRow(1)">❯</div>
 
    <div class="slider" id="slider">
-    <div class="poster"><img src="wednesday.jpeg" alt="Wednesday"></div>
-    <div class="poster"><img src="crown.jpeg" alt="The Crown"></div>
-    <div class="poster"><img src="sweethome.jpeg" alt="Sweet Home"></div>
-    <div class="poster"><img src="twilight.jpeg" alt="Twilight"></div>
+   <a href="wenesdaymovie.html" class="poster-link">
+    <div class="poster">
+        <img src="wednesday.jpeg" alt="Wednesday">
+    </div>
+</a>
+
+   
+   <a href="crownmovie.html" class="poster-link">
+    <div class="poster">
+        <img src="crown.jpeg" alt="Wednesday">
+    </div>
+</a>
+    
+    
+   <a href="shmovie.html" class="poster-link">
+    <div class="poster">
+        <img src="sweethome.jpeg" alt="The Crown">
+    </div>
+</a>
+   <a href="tlmovie.html" class="poster-link">
+    <div class="poster">
+        <img src="twilight.jpeg" alt="The Crown">
+    </div>
+</a>
     <div class="poster"><img src="narnia.jpeg" alt="Narnia"></div>
     <div class="poster"><img src="berlin.jpeg" alt="Berlin"></div>
     <div class="poster"><img src="parasite.jpeg" alt="Parasite"></div>
@@ -320,6 +353,14 @@ function slideRow(direction) {
     });
 }
 </script>
+<script>
+const myListBtn = document.getElementById("myListBtn");
+
+myListBtn.addEventListener("click", () => {
+    myListBtn.classList.toggle("active");
+});
+</script>
+
 
 </body>
 </html>

@@ -255,6 +255,7 @@ body {
     transition: 0.3s ease;
 }
 
+
 </style>
 </head>
 
@@ -276,14 +277,16 @@ body {
 <!-- HERO -->
 <section class="hero">
     <div class="hero-content">
-        <div class="hero-title">STRANGER THINGS</div>
+        <div class="hero-title">Wednesday</div>
         <p class="hero-desc">
             When a young boy vanishes, a small town uncovers a mystery involving
             secret experiments, terrifying supernatural forces and one strange little girl.
         </p>
         <div class="hero-buttons">
-             <button class="btn play" onclick="window.location.href='play.html'">
+           <button class="btn play" onclick="window.location.href='play.html'">
     ▶ Play
+</button>
+
             <button class="btn info" id="myListBtn">My List</button>
 
         </div>
@@ -291,7 +294,7 @@ body {
     
     <!-- Poster Stranger Things HORIZONTAL BESAR di samping - DIPERBESAR -->
     <div class="hero-poster-container">
-        <img src="ST.jpeg" alt="Stranger Things Poster" class="hero-poster">
+        <img src="wednesday.jpeg" alt="Stranger Things Poster" class="hero-poster">
     </div>
 </section>
 
@@ -303,25 +306,21 @@ body {
     <div class="row-arrow right" onclick="slideRow(1)">❯</div>
 
    <div class="slider" id="slider">
-    
-   <a href="wenesdaytv.html" class="poster-link">
-    <div class="poster">
-        <img src="wednesday.jpeg" alt="Wednesday">
-    </div>
-</a>
+    <div class="poster"><img src="wednesday.jpeg" alt="Wednesday"></div>
 
+   
    <a href="crowntv.html" class="poster-link">
     <div class="poster">
         <img src="crown.jpeg" alt="The Crown">
     </div>
 </a>
- 
+  
    <a href="shtv.html" class="poster-link">
     <div class="poster">
         <img src="sweethome.jpeg" alt="The Crown">
     </div>
 </a>
-    <a href="tltv.html" class="poster-link">
+  <a href="tltv.html" class="poster-link">
     <div class="poster">
         <img src="twilight.jpeg" alt="The Crown">
     </div>
@@ -356,6 +355,7 @@ myListBtn.addEventListener("click", () => {
     myListBtn.classList.toggle("active");
 });
 </script>
+
 
 </body>
 </html>
